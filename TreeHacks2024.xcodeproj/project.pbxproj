@@ -13,6 +13,8 @@
 		288CE0452B80993B00D6D2A6 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288CE0442B80993B00D6D2A6 /* ImmersiveView.swift */; };
 		288CE0472B80993D00D6D2A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288CE0462B80993D00D6D2A6 /* Assets.xcassets */; };
 		288CE04A2B80993D00D6D2A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288CE0492B80993D00D6D2A6 /* Preview Assets.xcassets */; };
+		C7AB34612B816A3E00408154 /* PrimaryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AB34602B816A3D00408154 /* PrimaryWindow.swift */; };
+		C7AB34632B816A8600408154 /* SecondaryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AB34622B816A8600408154 /* SecondaryWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		288CE0462B80993D00D6D2A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		288CE0492B80993D00D6D2A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		288CE04B2B80993D00D6D2A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7AB34602B816A3D00408154 /* PrimaryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryWindow.swift; sourceTree = "<group>"; };
+		C7AB34622B816A8600408154 /* SecondaryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		288CE03B2B80993B00D6D2A6 /* TreeHacks2024 */ = {
 			isa = PBXGroup;
 			children = (
+				C7AB345F2B8169C200408154 /* Windows */,
 				288CE0402B80993B00D6D2A6 /* TreeHacks2024App.swift */,
 				288CE0422B80993B00D6D2A6 /* ContentView.swift */,
 				288CE0442B80993B00D6D2A6 /* ImmersiveView.swift */,
@@ -82,6 +87,15 @@
 				288CE0492B80993D00D6D2A6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C7AB345F2B8169C200408154 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				C7AB34602B816A3D00408154 /* PrimaryWindow.swift */,
+				C7AB34622B816A8600408154 /* SecondaryWindow.swift */,
+			);
+			path = Windows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,7 +173,9 @@
 			files = (
 				288CE0432B80993B00D6D2A6 /* ContentView.swift in Sources */,
 				288CE0412B80993B00D6D2A6 /* TreeHacks2024App.swift in Sources */,
+				C7AB34612B816A3E00408154 /* PrimaryWindow.swift in Sources */,
 				288CE0452B80993B00D6D2A6 /* ImmersiveView.swift in Sources */,
+				C7AB34632B816A8600408154 /* SecondaryWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
