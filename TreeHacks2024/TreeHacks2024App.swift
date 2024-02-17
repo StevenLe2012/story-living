@@ -8,14 +8,14 @@
 import SwiftUI
 
 @main
-struct TreeHacks2024App: App {
+struct ARMemoryPalace: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PrimaryWindow()
         }
-
-        ImmersiveSpace(id: "ImmersiveSpace") {
-            ImmersiveView()
+        
+        WindowGroup (id: "SecondWindow"){
+            SecondWindow()
         }
     }
 }
