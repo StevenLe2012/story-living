@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct ARMemoryPalace: App {
-    @State private var photoImmersionStyle: ImmersionStyle = .mixed
     @State private var classroomImmersionStyle: ImmersionStyle = .full
     var body: some Scene {
         WindowGroup {
