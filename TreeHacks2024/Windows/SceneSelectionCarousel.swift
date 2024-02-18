@@ -32,7 +32,7 @@ class Store: ObservableObject {
 }
 
 
-struct CarouselView: View {
+struct SceneSelectionCarousel: View {
     @StateObject var store = Store()
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
@@ -102,5 +102,5 @@ struct CarouselView: View {
 
 
 #Preview {
-    CarouselView()
+    SceneSelectionCarousel()
 }
