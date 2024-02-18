@@ -11,8 +11,29 @@ import RealityKit
 import RealityKitContent
 import SwiftUI
 
+struct PhotoItem: Identifiable {
+    var id: Int
+    var title: String
+    var color: Color
+}
+
+class PhotoStore: ObservableObject {
+    @Published var items: [PhotoItem]
+    
+    let colors: [Color] = [.red, .orange, .blue, .teal, .mint, .green, .gray, .indigo, .black]
+
+    // dummy data
+    init() {
+        items = []
+        for i in 0...7 {
+            let new = PhotoItem(id: i, title: "Item \(i)", color: colors[i])
+            items.append(new)
+        }
+    }
+}
+
 struct PhotoCarouselView: View {
-    @StateObject var store = Store()
+    @StateObject var store = PhotoStore()
     @State private var rotationAngle: Double = 0
 
     // Parameters for the circular layout
