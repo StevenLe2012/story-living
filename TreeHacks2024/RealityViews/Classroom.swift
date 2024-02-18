@@ -19,14 +19,11 @@ struct Classroom: View {
 
     var body: some View {
         RealityView { content in
-             // Load your 3D model and add it to the scene
-             do {
-                 let local = try? await Entity(named: "Immersive", in: realityKitContentBundle)
-                 content.add(local!)
-             } catch {
-                 print("Failed to load the model: \(error)")
-             }
-         }
+            // Load your 3D model and add it to the scene
+            if let local = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
+                content.add(local)
+            }
+        }
     }
 
     /// Configures the model based on the current set of inputs.
