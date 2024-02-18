@@ -10,62 +10,60 @@ import RealityKitContent
 import Foundation
 import SwiftUI
 
+// Define the structure of each carousel item
 struct Item: Identifiable {
     var id: Int
     var title: String
-    var color: Color
+    var subtitle: String
+    var imageName: String
 }
 
+// Observable object to hold and manage the items
 class Store: ObservableObject {
     @Published var items: [Item]
     
-    let colors: [Color] = [.red, .orange, .blue, .teal, .mint, .green, .gray, .indigo, .black]
-
-    // dummy data
     init() {
         items = []
-        for i in 0...7 {
-            let new = Item(id: i, title: "Item \(i)", color: colors[i])
+        let imageNames = ["Apple", "Hiking", "Treehacks"] // Placeholder image names
+        let subtitles = ["A", "B", "C"] // Placeholder subtitles
+        
+        for i in 0..<imageNames.count {
+            let new = Item(id: i, title: "Item \(i)", subtitle: "Subtitle \(subtitles[i])", imageName: imageNames[i])
             items.append(new)
         }
     }
 }
 
-
+// The main view for the carousel
 struct SceneSelectionCarousel: View {
     @StateObject var store = Store()
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
     
-    @Environment(\.openWindow) private var openWindow
-    @Environment(\.dismissWindow) private var dismissWindow
-    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
-
-    
     var body: some View {
-        
         ZStack {
             ForEach(store.items) { item in
-                // article view
                 ZStack {
-                    RoundedRectangle(cornerRadius: 18)
-                        .fill(item.color)
-                    Text(item.title)
-                        .padding()
+                    Image(item.imageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipped()
+                        .frame(width: 200, height: 200)
+                        .cornerRadius(20)
+                    VStack {
+                        Text(item.title)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        Text(item.subtitle)
+                            .font(.subheadline)
+                            .foregroundColor(.white)
+                    }
                 }
                 .frame(width: 200, height: 200)
-                .scaleEffect(1.0 - abs(distance(item.id)) * 0.2 )
-                .opacity(1.0 - abs(distance(item.id)) * 0.3 )
+                .scaleEffect(1.0 - abs(distance(item.id)) * 0.2)
+                .opacity(1.0 - abs(distance(item.id)) * 0.3)
                 .offset(x: myXOffset(item.id), y: 0)
                 .zIndex(1.0 - abs(distance(item.id)) * 0.1)
-                .onTapGesture(perform: {
-                    Task {
-                        let result = await openImmersiveSpace(id: "classroom")
-                        if case .error = result {
-                            print("An error occurred")
-                        }
-                    }
-                })
             }
         }
         .gesture(
@@ -87,15 +85,15 @@ struct SceneSelectionCarousel: View {
         return (draggingItem - Double(item)).remainder(dividingBy: Double(store.items.count))
     }
     
-    func myXOffset(_ item: Int) -> Double {
+    func myXOffset(_ item: Int) -> CGFloat {
         let angle = Double.pi * 2 / Double(store.items.count) * distance(item)
-        return sin(angle) * 200
+        return CGFloat(sin(angle) * 200)
     }
-    
 }
 
-
-
-#Preview {
-    SceneSelectionCarousel()
+// Preview provider to visualize the carousel in Xcode's canvas
+struct SceneSelectionCarousel_Previews: PreviewProvider {
+    static var previews: some View {
+        SceneSelectionCarousel()
+    }
 }
