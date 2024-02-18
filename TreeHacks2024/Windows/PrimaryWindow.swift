@@ -48,11 +48,16 @@ struct CarouselView: View {
             ForEach(store.items) { item in
                 // article view
                 ZStack {
+                    
+                    VideoViewController(videoURL: Bundle.main.url(forResource: "spatialVideo1", withExtension: "MOV"))
                     RoundedRectangle(cornerRadius: 18)
                         .fill(item.color)
+//                        .glassBackgroundEffect()
                     Text(item.title)
                         .padding()
+                        .font(.title2)
                 }
+//                .background(item.color)
                 .frame(width: 200, height: 200)
                 .scaleEffect(1.0 - abs(distance(item.id)) * 0.2 )
                 .opacity(1.0 - abs(distance(item.id)) * 0.3 )

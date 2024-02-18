@@ -19,5 +19,10 @@ struct ARMemoryPalace: App {
             Classroom()
         }
         .immersionStyle(selection: $classroomImmersionStyle, in: .full)
+        
+        WindowGroup(id: "VideoWindow") {
+            VideoViewController(videoURL: Bundle.main.url(forResource: "spatialvideoexample", withExtension: "MOV"))
+        }
+        .windowStyle(.automatic)
     }
 }

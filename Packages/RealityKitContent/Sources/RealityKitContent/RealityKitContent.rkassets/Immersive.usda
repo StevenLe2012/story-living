@@ -17,5 +17,55 @@ def Xform "Root"
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
+
+    def "Scaniverse_2024_02_17_200953" (
+        active = true
+        prepend references = @Scaniverse_2024-02-17_200953.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-8.504782, 0, 3.9742959)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Scaniverse_2024_02_17_202315" (
+        active = true
+        prepend references = @Scaniverse_2024-02-17_202315.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-12.576576, 0, -1.6725564)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Scaniverse_2024_02_17_200302" (
+        active = true
+        prepend references = @Scaniverse_2024-02-17_200302.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-5.0989823, 0, -6.268117)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Scaniverse_2024_02_17_195437" (
+        active = true
+        prepend references = @Scaniverse_2024-02-17_195437.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-12.360939, 0, -9.241697)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Scaniverse_2024_02_17_193346" (
+        active = true
+        prepend references = @Scaniverse_2024-02-17_193346.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-18.41703, 0, -0.9733906)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
 }
 
