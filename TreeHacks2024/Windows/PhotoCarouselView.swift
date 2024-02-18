@@ -41,6 +41,11 @@ struct PhotoCarouselView: View {
     let animationDuration: Double = 0.02 // Speed of rotation
 
     var body: some View {
+        
+        VideoViewController(videoURL: Bundle.main.url(forResource: "video1", withExtension: "MOV"))
+        
+        VideoViewController(videoURL: Bundle.main.url(forResource: "video2", withExtension: "MOV"))
+        
         ZStack {
             ForEach(store.items.indices, id: \.self) { index in
                 let item = store.items[index]
@@ -48,6 +53,7 @@ struct PhotoCarouselView: View {
                     RoundedRectangle(cornerRadius: 18)
                         .fill(item.color)
                     Text(item.title)
+//                        .font(.title2)
                         .padding()
                 }
                 .frame(width: 200, height: 200)
@@ -57,10 +63,11 @@ struct PhotoCarouselView: View {
                 .animation(Animation.linear(duration: animationDuration), value: rotationAngle)
             }
         }
+        .offset(z: 500)
         .onAppear {
             // Timer to update rotationAngle and cause the rotation effect
             Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: true) { _ in
-                self.rotationAngle += 1
+                self.rotationAngle += 0.2
                 if self.rotationAngle >= 360 {
                     self.rotationAngle = 0
                 }

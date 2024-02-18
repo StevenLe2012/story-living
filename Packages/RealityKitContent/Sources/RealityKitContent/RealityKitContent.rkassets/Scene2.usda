@@ -1,0 +1,117 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.60.6)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["El_Capitan", "Sphere", "Sky"]
+    def Sphere "Sphere" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (3.1415923, 1.5707963, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/Sky> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = -20
+        quatf xformOp:orient = (-1.3767877e-7, -0.70710677, -1.3767878e-7, 0.70710677)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:surface.connect = </Root/Sphere/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "ImageBasedLight"
+        {
+            asset ibl = @ImageBasedLight.exr@
+            uniform token info:id = "RealityKit.ImageBasedLight"
+            bool isGlobalIBL = 0
+        }
+
+        def RealityKitComponent "ImageBasedLightReceiver"
+        {
+            rel iblEntity = </Root/Sphere>
+            uniform token info:id = "RealityKit.ImageBasedLightReceiver"
+        }
+    }
+
+    def Material "Sky"
+    {
+        token inputs:frame:stPrimvarName = "st"
+        token outputs:mtlx:surface
+        token outputs:realitykit:vertex
+        prepend token outputs:surface.connect = </Root/Sky/UsdPreviewSurface.outputs:surface>
+
+        def Shader "UsdPreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.6182694, 0.77149343, 0.8343395) (
+                colorSpace = "srgb_displayp3"
+            )
+            color3f inputs:diffuseColor.connect = </Root/Sky/diffuseColor.outputs:rgb>
+            token outputs:surface
+        }
+
+        def Shader "diffuseColor"
+        {
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @skybox-dawn.jpg@
+            float2 inputs:st.connect = </Root/Sky/diffuseColor/TexCoordReader.outputs:result>
+            color3f outputs:rgb
+
+            def Shader "TexCoordReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname.connect = </Root/Sky/UsdPreviewSurface.inputs:frame:stPrimvarName>
+                float2 outputs:result
+            }
+        }
+    }
+
+    def "Arc_de_Triomphe" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0.70854735, 0)
+        }
+        prepend references = @Arc_de_Triomphe.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9378987, 0, 0.34690922, 0)
+        float3 xformOp:scale = (0.022240413, 0.022240413, 0.022240413)
+        float3 xformOp:translate = (0.07620612, 0.5884455, -2.2469087)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "ImageBasedLight"
+        {
+            asset ibl = @ImageBasedLight.exr@
+            uniform token info:id = "RealityKit.ImageBasedLight"
+            bool isGlobalIBL = 0
+        }
+
+        def RealityKitComponent "ImageBasedLightReceiver"
+        {
+            rel iblEntity = </Root/Arc_de_Triomphe>
+            uniform token info:id = "RealityKit.ImageBasedLightReceiver"
+        }
+    }
+}
+

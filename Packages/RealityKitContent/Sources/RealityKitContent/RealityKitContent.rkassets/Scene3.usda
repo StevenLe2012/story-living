@@ -1,0 +1,157 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.60.6)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["El_Capitan", "Sphere", "Sky"]
+    def Material "Sky"
+    {
+        token inputs:frame:stPrimvarName = "st"
+        token outputs:mtlx:surface
+        token outputs:realitykit:vertex
+        prepend token outputs:surface.connect = </Root/Sky/UsdPreviewSurface.outputs:surface>
+
+        def Shader "UsdPreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.6182694, 0.77149343, 0.8343395) (
+                colorSpace = "srgb_displayp3"
+            )
+            color3f inputs:diffuseColor.connect = </Root/Sky/diffuseColor.outputs:rgb>
+            token outputs:surface
+        }
+
+        def Shader "diffuseColor"
+        {
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @skybox1000clouds.jpg@
+            float2 inputs:st.connect = </Root/Sky/diffuseColor/TexCoordReader.outputs:result>
+            color3f outputs:rgb
+
+            def Shader "TexCoordReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname.connect = </Root/Sky/UsdPreviewSurface.inputs:frame:stPrimvarName>
+                float2 outputs:result
+            }
+        }
+    }
+
+    def "Apple_Parks_rainbow" (
+        active = true
+        prepend references = @Apple_Parks_rainbow.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.0832725, 0.0832725, 0.0832725)
+        float3 xformOp:translate = (0, 0, -7.3178954)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "Matriau_001"
+            {
+                token inputs:frame:stPrimvarName = "st"
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+
+                over "pbr_shader"
+                {
+                    float inputs:clearcoat = 1
+                    color3f inputs:diffuseColor.connect = </Root/Apple_Parks_rainbow/Materials/Matriau_001/diffuseColor.outputs:rgb>
+                    normal3f inputs:normal = (10, 10, 10)
+                }
+
+                def Shader "diffuseColor"
+                {
+                    uniform token info:id = "UsdUVTexture"
+                    asset inputs:file = @grass-seamless.jpeg@
+                    float2 inputs:st.connect = </Root/Apple_Parks_rainbow/Materials/Matriau_001/diffuseColor/TexCoordReader.outputs:result>
+                    color3f outputs:rgb
+
+                    def Shader "TexCoordReader"
+                    {
+                        uniform token info:id = "UsdPrimvarReader_float2"
+                        token inputs:varname.connect = </Root/Apple_Parks_rainbow/Materials/Matriau_001/pbr_shader.inputs:frame:stPrimvarName>
+                        float2 outputs:result
+                    }
+                }
+            }
+
+            over "Matriau"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+
+        def RealityKitComponent "ImageBasedLight"
+        {
+            asset ibl = @cloudy-skybox.jpg@
+            uniform token info:id = "RealityKit.ImageBasedLight"
+            float intensityExponent = 0.47454545
+            bool isGlobalIBL = 0
+        }
+
+        def RealityKitComponent "ImageBasedLightReceiver"
+        {
+            rel iblEntity = </Root/Apple_Parks_rainbow>
+            uniform token info:id = "RealityKit.ImageBasedLightReceiver"
+        }
+    }
+
+    def Sphere "Sphere" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, -0.3313356, 1.2606618e-7)
+        }
+    )
+    {
+        rel material:binding = </Root/Sky> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = -20
+        quatf xformOp:orient = (0.69742537, -0.6974254, -0.11660974, -0.11660966)
+        float3 xformOp:scale = (0.49517536, 0.49517533, 0.49517533)
+        float3 xformOp:translate = (-0.46355104, -7.599592e-7, -7.4102125)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            prepend token outputs:surface.connect = </Root/Sphere/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "ImageBasedLight"
+        {
+            asset ibl = @ImageBasedLight.exr@
+            uniform token info:id = "RealityKit.ImageBasedLight"
+            float intensityExponent = 1.1031818
+            bool isGlobalIBL = 0
+        }
+
+        def RealityKitComponent "ImageBasedLightReceiver"
+        {
+            rel iblEntity = </Root/Sphere>
+            uniform token info:id = "RealityKit.ImageBasedLightReceiver"
+        }
+    }
+}
+

@@ -11,11 +11,141 @@
       }
     ]
   },
+  "6C1A7A79-B29A-4A58-9CB9-3B89F085FA2D" : {
+    "objectMetadataList" : [
+      [
+        "6C1A7A79-B29A-4A58-9CB9-3B89F085FA2D",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "6CBA5BEE-0988-4D8F-BCFB-64AA2ED521E1" : {
+    "objectMetadataList" : [
+      [
+        "6CBA5BEE-0988-4D8F-BCFB-64AA2ED521E1",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
   "65F6F990-A780-4474-B78B-572E0E4E273D" : {
     "objectMetadataList" : [
       [
         "65F6F990-A780-4474-B78B-572E0E4E273D",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "835B56D6-42A1-4AD2-A0B5-849754EA374C" : {
+    "objectMetadataList" : [
+      [
+        "835B56D6-42A1-4AD2-A0B5-849754EA374C",
+        "Root",
+        "Apple_Parks_rainbow",
+        "Meshes",
+        "Sketchfab_model",
+        "_ecb7948b7154b47a8e8a59ff8afaec6_fbx",
+        "RootNode",
+        "Plan"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "835B56D6-42A1-4AD2-A0B5-849754EA374C",
+        "Root",
+        "Apple_Parks_rainbow",
+        "Meshes"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "835B56D6-42A1-4AD2-A0B5-849754EA374C",
+        "Root",
+        "Apple_Parks_rainbow",
+        "Meshes",
+        "Sketchfab_model",
+        "_ecb7948b7154b47a8e8a59ff8afaec6_fbx",
+        "RootNode",
+        "Plan",
+        "Plan_Mat______riau_001_0"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "835B56D6-42A1-4AD2-A0B5-849754EA374C",
+        "Root",
+        "Apple_Parks_rainbow",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "835B56D6-42A1-4AD2-A0B5-849754EA374C",
+        "Root",
+        "Apple_Parks_rainbow",
+        "Meshes",
+        "Sketchfab_model",
+        "_ecb7948b7154b47a8e8a59ff8afaec6_fbx",
+        "RootNode"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "835B56D6-42A1-4AD2-A0B5-849754EA374C",
+        "Root",
+        "Apple_Parks_rainbow",
+        "Meshes",
+        "Sketchfab_model"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "835B56D6-42A1-4AD2-A0B5-849754EA374C",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "835B56D6-42A1-4AD2-A0B5-849754EA374C",
+        "Root",
+        "Apple_Parks_rainbow"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "835B56D6-42A1-4AD2-A0B5-849754EA374C",
+        "Root",
+        "Apple_Parks_rainbow",
+        "Meshes",
+        "Sketchfab_model",
+        "_ecb7948b7154b47a8e8a59ff8afaec6_fbx"
       ],
       {
         "isExpanded" : true,
@@ -39,7 +169,97 @@
     "objectMetadataList" : [
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "visionbros",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "visionbrosLitALot",
+        "Materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "scanBlended2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "visionbrosLitALot",
+        "Scaniverse_2024_02_17_224004"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "TextureShader"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "visionbros"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "scanBlended2",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "scanBlended2",
+        "Geom",
+        "Scaniverse_2024_02_17_195437",
+        "Geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "scanBlended2",
+        "Geom",
+        "Scaniverse_2024_02_17_195437"
       ],
       {
         "isExpanded" : true,

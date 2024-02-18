@@ -7,65 +7,171 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Sphere_Left", "Sphere_Right", "GridMaterial"]
-    def "Classroom" (
-        active = true
-        prepend references = @Classroom.usdz@
-    )
-    {
-        float3 xformOp:scale = (0.01, 0.01, 0.01)
-        float3 xformOp:translate = (0, 0, 0)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "Scaniverse_2024_02_17_200953" (
-        active = true
-        prepend references = @Scaniverse_2024-02-17_200953.usdz@
+    reorder nameChildren = ["visionbros", "scaniverse_1", "scanBlended2", "TextureShader"]
+    def "scaniverse_1" (
+        active = false
+        prepend references = @scaniverse-1.usdz@
     )
     {
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-8.504782, 0, 3.9742959)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "ImageBasedLight"
+        {
+            asset ibl = @light-2.png@
+            uniform token info:id = "RealityKit.ImageBasedLight"
+            bool isGlobalIBL = 0
+        }
+
+        def RealityKitComponent "ImageBasedLightReceiver"
+        {
+            rel iblEntity = </Root/scaniverse_1>
+            uniform token info:id = "RealityKit.ImageBasedLightReceiver"
+        }
     }
 
-    def "Scaniverse_2024_02_17_202315" (
+    def "scanBlended2" (
+        active = false
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        references = @scanBlended2.usdz@
+    )
+    {
+        rel material:binding = </Root/scanBlended2/Materials/main> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "ImageBasedLight"
+        {
+            asset ibl = @ImageBasedLight.exr@
+            uniform token info:id = "RealityKit.ImageBasedLight"
+            bool isGlobalIBL = 0
+        }
+
+        def RealityKitComponent "ImageBasedLightReceiver"
+        {
+            rel iblEntity = </Root/scanBlended2>
+            uniform token info:id = "RealityKit.ImageBasedLightReceiver"
+        }
+
+        over "Geom"
+        {
+            over "Scaniverse_2024_02_17_195437"
+            {
+                over "Geom"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Root/TextureShader> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    def Material "TextureShader"
+    {
+        token outputs:mtlx:surface.connect = </Root/TextureShader/PBRSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (299.25, 99.5)
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default = (0, 0, 0) (
+                colorSpace = "srgb_displayp3"
+            )
+            asset inputs:file = @Scaniverse_2024_02_17_224004.jpg@
+            string inputs:filtertype
+            float2 inputs:texcoord
+            string inputs:uaddressmode
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-697.1797, 35.890625)
+            float2 ui:nodegraph:node:size = (148.5, 199)
+            int ui:nodegraph:node:stackingOrder = 18
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:texcoord"]
+        }
+
+        def Shader "PBRSurface"
+        {
+            uniform token info:id = "ND_realitykit_pbr_surfaceshader"
+            color3f inputs:baseColor.connect = </Root/TextureShader/Constant.outputs:out>
+            float inputs:clearcoat
+            float inputs:clearcoatRoughness
+            color3f inputs:emissiveColor
+            bool inputs:hasPremultipliedAlpha
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:opacity
+            float inputs:opacityThreshold
+            float inputs:roughness
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (34.253906, 405.48438)
+            float2 ui:nodegraph:node:size = (167, 307)
+            int ui:nodegraph:node:stackingOrder = 4
+        }
+
+        def Shader "Constant"
+        {
+            uniform token info:id = "ND_constant_color3"
+            color3f inputs:value = (0.5848327, 0.17088845, 0.10402991) (
+                colorSpace = "srgb_displayp3"
+            )
+            color3f inputs:value.connect = </Root/TextureShader/Image.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-465.1836, 40.789062)
+            float2 ui:nodegraph:node:size = (151, 53)
+            int ui:nodegraph:node:stackingOrder = 17
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:value"]
+        }
+    }
+
+    def "visionbros" (
         active = true
-        prepend references = @Scaniverse_2024-02-17_202315.usdz@
+        prepend references = @visionbros.usdz@
     )
     {
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-12.576576, 0, -1.6725564)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
 
-    def "Scaniverse_2024_02_17_200302" (
-        active = true
-        prepend references = @Scaniverse_2024-02-17_200302.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-5.0989823, 0, -6.268117)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
+        def RealityKitComponent "ImageBasedLight"
+        {
+            bool enableBlend = 0
+            bool enableRotation = 1
+            asset ibl = @ImageBasedLight.exr@
+            uniform token info:id = "RealityKit.ImageBasedLight"
+            bool isGlobalIBL = 0
+        }
 
-    def "Scaniverse_2024_02_17_195437" (
-        active = true
-        prepend references = @Scaniverse_2024-02-17_195437.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-12.360939, 0, -9.241697)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
+        def RealityKitComponent "ImageBasedLightReceiver"
+        {
+            rel iblEntity = </Root/visionbros>
+            uniform token info:id = "RealityKit.ImageBasedLightReceiver"
+        }
 
-    def "Scaniverse_2024_02_17_193346" (
-        active = true
-        prepend references = @Scaniverse_2024-02-17_193346.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-18.41703, 0, -0.9733906)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        over "Geom"
+        {
+            over "Scaniverse_2024_02_17_224004" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </Root/visionbros/Materials/main> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+            }
+        }
+
+        def RealityKitComponent "GroundingShadow"
+        {
+            uniform token info:id = "RealityKit.GroundingShadow"
+        }
     }
 }
 

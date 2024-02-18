@@ -20,7 +20,12 @@ struct Classroom: View {
     var body: some View {
         RealityView { content in
             // Load your 3D model and add it to the scene
-            if let local = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
+            if let local = try? await Entity(named: "Scene2", in: realityKitContentBundle) {
+//                guard let resource = try? await EnvironmentResource(named: "ImageBasedLight") else { return }
+//                let iblComponent = ImageBasedLightComponent(source: .single(resource), intensityExponent: 0.25)
+//                local.components.set(iblComponent)
+//                local.components.set(ImageBasedLightReceiverComponent(imageBasedLight: local))
+                
                 content.add(local)
             }
         }
