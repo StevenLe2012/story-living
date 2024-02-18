@@ -20,7 +20,7 @@ struct Classroom: View {
     var body: some View {
         RealityView { content in
             // Load your 3D model and add it to the scene
-            if let local = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
+            if let local = try? await Entity(named: "Classroom", in: realityKitContentBundle) {
                 content.add(local)
             }
         }

@@ -13,9 +13,15 @@
 		288CE0452B80993B00D6D2A6 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288CE0442B80993B00D6D2A6 /* ImmersiveView.swift */; };
 		288CE0472B80993D00D6D2A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288CE0462B80993D00D6D2A6 /* Assets.xcassets */; };
 		288CE04A2B80993D00D6D2A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288CE0492B80993D00D6D2A6 /* Preview Assets.xcassets */; };
+		C727DFF42B821B8F0061D6CD /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727DFF32B821B8F0061D6CD /* VideoViewController.swift */; };
+		C727DFFA2B8227A80061D6CD /* Yosemite.mov in Resources */ = {isa = PBXBuildFile; fileRef = C727DFF92B8227A80061D6CD /* Yosemite.mov */; };
+		C727DFFF2B822CF70061D6CD /* Paris.mov in Resources */ = {isa = PBXBuildFile; fileRef = C727DFFD2B822CF70061D6CD /* Paris.mov */; };
+		C727E0002B822CF70061D6CD /* Summer23.mov in Resources */ = {isa = PBXBuildFile; fileRef = C727DFFE2B822CF70061D6CD /* Summer23.mov */; };
+		C727E0022B822D650061D6CD /* Tibet.mov in Resources */ = {isa = PBXBuildFile; fileRef = C727E0012B822D650061D6CD /* Tibet.mov */; };
 		C752A3222B8196D00089E61F /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C752A3212B8196D00089E61F /* Classroom.swift */; };
 		C796CBA62B81C8DD00F1AB26 /* PhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796CBA52B81C8DD00F1AB26 /* PhotoCarouselView.swift */; };
 		C7AB34612B816A3E00408154 /* SceneSelectionCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AB34602B816A3D00408154 /* SceneSelectionCarousel.swift */; };
+		C7C4AE712B81E732005FD10B /* SceneScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C4AE702B81E732005FD10B /* SceneScan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +33,15 @@
 		288CE0462B80993D00D6D2A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		288CE0492B80993D00D6D2A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		288CE04B2B80993D00D6D2A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C727DFF32B821B8F0061D6CD /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		C727DFF92B8227A80061D6CD /* Yosemite.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Yosemite.mov; sourceTree = "<group>"; };
+		C727DFFD2B822CF70061D6CD /* Paris.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Paris.mov; sourceTree = "<group>"; };
+		C727DFFE2B822CF70061D6CD /* Summer23.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Summer23.mov; sourceTree = "<group>"; };
+		C727E0012B822D650061D6CD /* Tibet.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Tibet.mov; sourceTree = "<group>"; };
 		C752A3212B8196D00089E61F /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
 		C796CBA52B81C8DD00F1AB26 /* PhotoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselView.swift; sourceTree = "<group>"; };
 		C7AB34602B816A3D00408154 /* SceneSelectionCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSelectionCarousel.swift; sourceTree = "<group>"; };
+		C7C4AE702B81E732005FD10B /* SceneScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneScan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,10 @@
 		288CE03B2B80993B00D6D2A6 /* TreeHacks2024 */ = {
 			isa = PBXGroup;
 			children = (
+				C727E0012B822D650061D6CD /* Tibet.mov */,
+				C727DFFD2B822CF70061D6CD /* Paris.mov */,
+				C727DFFE2B822CF70061D6CD /* Summer23.mov */,
+				C727DFF92B8227A80061D6CD /* Yosemite.mov */,
 				C752A3202B8196C20089E61F /* RealityViews */,
 				C752A31D2B817BD80089E61F /* Views */,
 				C7AB345F2B8169C200408154 /* Windows */,
@@ -96,6 +112,7 @@
 		C752A31D2B817BD80089E61F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C727DFF32B821B8F0061D6CD /* VideoViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				C752A3212B8196D00089E61F /* Classroom.swift */,
+				C7C4AE702B81E732005FD10B /* SceneScan.swift */,
 			);
 			path = RealityViews;
 			sourceTree = "<group>";
@@ -179,7 +197,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				288CE04A2B80993D00D6D2A6 /* Preview Assets.xcassets in Resources */,
+				C727DFFF2B822CF70061D6CD /* Paris.mov in Resources */,
 				288CE0472B80993D00D6D2A6 /* Assets.xcassets in Resources */,
+				C727E0022B822D650061D6CD /* Tibet.mov in Resources */,
+				C727E0002B822CF70061D6CD /* Summer23.mov in Resources */,
+				C727DFFA2B8227A80061D6CD /* Yosemite.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +212,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7C4AE712B81E732005FD10B /* SceneScan.swift in Sources */,
 				288CE0432B80993B00D6D2A6 /* ContentView.swift in Sources */,
+				C727DFF42B821B8F0061D6CD /* VideoViewController.swift in Sources */,
 				288CE0412B80993B00D6D2A6 /* TreeHacks2024App.swift in Sources */,
 				C7AB34612B816A3E00408154 /* SceneSelectionCarousel.swift in Sources */,
 				288CE0452B80993B00D6D2A6 /* ImmersiveView.swift in Sources */,

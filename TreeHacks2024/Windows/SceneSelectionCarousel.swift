@@ -5,9 +5,9 @@
 //  Created by Jiahui Chen  on 2/17/24.
 //
 
+import Foundation
 import RealityKit
 import RealityKitContent
-import Foundation
 import SwiftUI
 
 // Define the structure of each carousel item
@@ -16,19 +16,23 @@ struct Item: Identifiable {
     var title: String
     var subtitle: String
     var imageName: String
+    var videoName: String
+    var entityName: String
 }
 
 // Observable object to hold and manage the items
 class Store: ObservableObject {
     @Published var items: [Item]
-    
+
     init() {
         items = []
-        let imageNames = ["Apple", "Hiking", "Treehacks"] // Placeholder image names
-        let subtitles = ["A", "B", "C"] // Placeholder subtitles
-        
-        for i in 0..<imageNames.count {
-            let new = Item(id: i, title: "Item \(i)", subtitle: "Subtitle \(subtitles[i])", imageName: imageNames[i])
+        let imageNames = ["Tibet", "Apple", "Hiking", "Paris"] // Placeholder image names
+        let titles = ["Tibet Backpacking", "Summer Memories", "Yosemite", "Paris"]
+        let subtitles = ["Feb 2024", "July 2023", "June 2021", "Aug 2023"] // Placeholder subtitles
+        let videoNames = ["TibetWindow", "AppleParkWindow", "YosemiteWindow", "ParisWindow"]
+        let entityIds = ["TibetSpace", "AppleParkSpace", "ElCapitanSpace", "ParisSpace"]
+        for i in 0 ..< imageNames.count {
+            let new = Item(id: i, title: "\(titles[i])", subtitle: "\(subtitles[i])", imageName: imageNames[i], videoName: videoNames[i], entityName: entityIds[i])
             items.append(new)
         }
     }
@@ -36,14 +40,22 @@ class Store: ObservableObject {
 
 // The main view for the carousel
 struct SceneSelectionCarousel: View {
+    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
+    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissWindow) private var dismissWindow
+    @Environment(\.dismiss) private var dismiss
+
     @StateObject var store = Store()
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
-    
+
+    @State var currentWindow: String = ""
+
     var body: some View {
         ZStack {
             ForEach(store.items) { item in
-                ZStack {
+                VStack {
                     Image(item.imageName)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -59,9 +71,36 @@ struct SceneSelectionCarousel: View {
                             .foregroundColor(.white)
                     }
                 }
+                .onTapGesture {
+//                    if currentWindow != "" {
+//                        let _ = print("jiahui: currentWorld: \(currentWindow)")
+//                        dismissWindow(id: currentWindow)
+//                    }
+
+                    Task {
+                        dismiss()
+                        if currentWindow != "" {
+                            await dismissImmersiveSpace()
+                        }
+                        let _ = print("jiahui: entityName: \(item.entityName)")
+                        await openImmersiveSpace(id: item.entityName)
+                        if currentWindow != "" {
+                            dismissWindow(id: currentWindow)
+                        }
+                        currentWindow = item.videoName
+                        openWindow(id: item.videoName)
+
+//                        ForEach(store.items, id: \.self) { item in
+//                            if item.videoName != currentWindow {
+//                                dismissWindow(id: item.videoName)
+//                            }
+//                        }
+                        openWindow(id: "Carousel")
+                    }
+                }
                 .frame(width: 200, height: 200)
                 .scaleEffect(1.0 - abs(distance(item.id)) * 0.2)
-                .opacity(1.0 - abs(distance(item.id)) * 0.3)
+                .opacity(1.0 - abs(distance(item.id)) * 0.5)
                 .offset(x: myXOffset(item.id), y: 0)
                 .zIndex(1.0 - abs(distance(item.id)) * 0.1)
             }
@@ -80,11 +119,11 @@ struct SceneSelectionCarousel: View {
                 }
         )
     }
-    
+
     func distance(_ item: Int) -> Double {
         return (draggingItem - Double(item)).remainder(dividingBy: Double(store.items.count))
     }
-    
+
     func myXOffset(_ item: Int) -> CGFloat {
         let angle = Double.pi * 2 / Double(store.items.count) * distance(item)
         return CGFloat(sin(angle) * 200)
