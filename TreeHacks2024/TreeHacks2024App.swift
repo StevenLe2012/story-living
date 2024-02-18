@@ -12,13 +12,13 @@ struct ARMemoryPalace: App {
     @State private var photoImmersionStyle: ImmersionStyle = .mixed
     @State private var classroomImmersionStyle: ImmersionStyle = .full
     var body: some Scene {
-        ImmersiveSpace {
-            PhotoCarouselView()
+        WindowGroup {
+            SceneSelectionCarousel()
         }
-            .immersionStyle(selection: $photoImmersionStyle, in: .mixed)
-        
+        .windowStyle(.plain)
+
         ImmersiveSpace(id: "classroom") {
-            Classroom()
+            Scan4()
         }
         .immersionStyle(selection: $classroomImmersionStyle, in: .full)
     }

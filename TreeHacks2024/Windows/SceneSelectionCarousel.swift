@@ -24,11 +24,12 @@ class Store: ObservableObject {
     
     init() {
         items = []
-        let imageNames = ["Apple", "Hiking", "Treehacks"] // Placeholder image names
-        let subtitles = ["A", "B", "C"] // Placeholder subtitles
+        let imageNames = ["Treehacks", "Apple", "Hiking", "Surfing", "CYN"] // Placeholder image names
+        let titles = ["TreeHacks", "Apple Internship", "Yosemite", "Surfing", "New Year Celebration"]
+        let subtitles = ["Feb 2024", "July 2023", "June 2021", "Aug 2023", "May 2021"] // Placeholder subtitles
         
         for i in 0..<imageNames.count {
-            let new = Item(id: i, title: "Item \(i)", subtitle: "Subtitle \(subtitles[i])", imageName: imageNames[i])
+            let new = Item(id: i, title: "\(titles[i])", subtitle: "\(subtitles[i])", imageName: imageNames[i])
             items.append(new)
         }
     }
@@ -43,7 +44,7 @@ struct SceneSelectionCarousel: View {
     var body: some View {
         ZStack {
             ForEach(store.items) { item in
-                ZStack {
+                VStack {
                     Image(item.imageName)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -61,7 +62,7 @@ struct SceneSelectionCarousel: View {
                 }
                 .frame(width: 200, height: 200)
                 .scaleEffect(1.0 - abs(distance(item.id)) * 0.2)
-                .opacity(1.0 - abs(distance(item.id)) * 0.3)
+                .opacity(1.0 - abs(distance(item.id)) * 0.5)
                 .offset(x: myXOffset(item.id), y: 0)
                 .zIndex(1.0 - abs(distance(item.id)) * 0.1)
             }
