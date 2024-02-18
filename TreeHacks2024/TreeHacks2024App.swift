@@ -9,13 +9,15 @@ import SwiftUI
 
 @main
 struct ARMemoryPalace: App {
+    @State private var classroomImmersionStyle: ImmersionStyle = .full
     var body: some Scene {
         WindowGroup {
-            PrimaryWindow()
-        }
+            CarouselView()
+        }.windowStyle(.plain)
         
-        WindowGroup (id: "SecondWindow"){
-            SecondWindow()
+        ImmersiveSpace(id: "classroom") {
+            Classroom()
         }
+        .immersionStyle(selection: $classroomImmersionStyle, in: .full)
     }
 }
