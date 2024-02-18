@@ -9,16 +9,47 @@ import SwiftUI
 
 @main
 struct ARMemoryPalace: App {
-    @State private var classroomImmersionStyle: ImmersionStyle = .full
+    @State private var scan4ImmersionStyle: ImmersionStyle = .full
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: "Carousel") {
             SceneSelectionCarousel()
         }
         .windowStyle(.plain)
 
-        ImmersiveSpace(id: "classroom") {
-            Scan4()
+        WindowGroup(id: "TibetWindow") {
+            VideoViewController(videoURL: Bundle.main.url(forResource: "Tibet", withExtension: "mov"))
         }
-        .immersionStyle(selection: $classroomImmersionStyle, in: .full)
+
+        WindowGroup(id: "ParisWindow") {
+            VideoViewController(videoURL: Bundle.main.url(forResource: "Paris", withExtension: "mov"))
+        }
+
+        WindowGroup(id: "AppleParkWindow") {
+            VideoViewController(videoURL: Bundle.main.url(forResource: "Summer23", withExtension: "mov"))
+        }
+
+        WindowGroup(id: "YosemiteWindow") {
+            VideoViewController(videoURL: Bundle.main.url(forResource: "Yosemite", withExtension: "mov"))
+        }
+
+        ImmersiveSpace(id: "TibetSpace") {
+            Immersive(entity: "Temple")
+        }
+        .immersionStyle(selection: $scan4ImmersionStyle, in: .full)
+
+        ImmersiveSpace(id: "ParisSpace") {
+            Immersive(entity: "Paris")
+        }
+        .immersionStyle(selection: $scan4ImmersionStyle, in: .full)
+
+        ImmersiveSpace(id: "AppleParkSpace") {
+            Immersive(entity: "ApplePark")
+        }
+        .immersionStyle(selection: $scan4ImmersionStyle, in: .full)
+
+        ImmersiveSpace(id: "ElCapitanSpace") {
+            Immersive(entity: "El Capitan")
+        }
+        .immersionStyle(selection: $scan4ImmersionStyle, in: .full)
     }
 }

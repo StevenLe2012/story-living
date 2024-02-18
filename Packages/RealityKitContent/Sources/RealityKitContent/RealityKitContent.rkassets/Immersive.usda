@@ -7,15 +7,44 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Sphere_Left", "Sphere_Right", "GridMaterial"]
-    def "Classroom" (
+    def "Immersive" (
         active = true
-        prepend references = @Classroom.usdz@
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (3.1415927, 0, 0)
+        }
+        references = @Scan1.usdz@
     )
     {
-        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        rel material:binding = </Root/Immersive/Materials/main> (
+            bindMaterialAs = "strongerThanDescendants"
+        )
+        quatf xformOp:orient = (-4.371139e-8, 1, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "main"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
+
+        def RealityKitComponent "ImageBasedLight"
+        {
+            asset ibl = @White_square.png@
+            uniform token info:id = "RealityKit.ImageBasedLight"
+            bool isGlobalIBL = 0
+        }
+
+        def RealityKitComponent "ImageBasedLightReceiver"
+        {
+            rel iblEntity = </Root/Immersive>
+            uniform token info:id = "RealityKit.ImageBasedLightReceiver"
+        }
     }
 }
 
