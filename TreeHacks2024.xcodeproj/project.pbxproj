@@ -14,7 +14,8 @@
 		288CE0472B80993D00D6D2A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288CE0462B80993D00D6D2A6 /* Assets.xcassets */; };
 		288CE04A2B80993D00D6D2A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288CE0492B80993D00D6D2A6 /* Preview Assets.xcassets */; };
 		C752A3222B8196D00089E61F /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C752A3212B8196D00089E61F /* Classroom.swift */; };
-		C7AB34612B816A3E00408154 /* PrimaryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AB34602B816A3D00408154 /* PrimaryWindow.swift */; };
+		C796CBA62B81C8DD00F1AB26 /* PhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C796CBA52B81C8DD00F1AB26 /* PhotoCarouselView.swift */; };
+		C7AB34612B816A3E00408154 /* SceneSelectionCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AB34602B816A3D00408154 /* SceneSelectionCarousel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		288CE0492B80993D00D6D2A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		288CE04B2B80993D00D6D2A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C752A3212B8196D00089E61F /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
-		C7AB34602B816A3D00408154 /* PrimaryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryWindow.swift; sourceTree = "<group>"; };
+		C796CBA52B81C8DD00F1AB26 /* PhotoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselView.swift; sourceTree = "<group>"; };
+		C7AB34602B816A3D00408154 /* SceneSelectionCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSelectionCarousel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,8 @@
 		C7AB345F2B8169C200408154 /* Windows */ = {
 			isa = PBXGroup;
 			children = (
-				C7AB34602B816A3D00408154 /* PrimaryWindow.swift */,
+				C7AB34602B816A3D00408154 /* SceneSelectionCarousel.swift */,
+				C796CBA52B81C8DD00F1AB26 /* PhotoCarouselView.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -189,9 +192,10 @@
 			files = (
 				288CE0432B80993B00D6D2A6 /* ContentView.swift in Sources */,
 				288CE0412B80993B00D6D2A6 /* TreeHacks2024App.swift in Sources */,
-				C7AB34612B816A3E00408154 /* PrimaryWindow.swift in Sources */,
+				C7AB34612B816A3E00408154 /* SceneSelectionCarousel.swift in Sources */,
 				288CE0452B80993B00D6D2A6 /* ImmersiveView.swift in Sources */,
 				C752A3222B8196D00089E61F /* Classroom.swift in Sources */,
+				C796CBA62B81C8DD00F1AB26 /* PhotoCarouselView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,7 +329,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TreeHacks2024/Preview Content\"";
-				DEVELOPMENT_TEAM = U2HNPJY2CZ;
+				DEVELOPMENT_TEAM = 3833Q4CX9P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -351,7 +355,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TreeHacks2024/Preview Content\"";
-				DEVELOPMENT_TEAM = U2HNPJY2CZ;
+				DEVELOPMENT_TEAM = 3833Q4CX9P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
