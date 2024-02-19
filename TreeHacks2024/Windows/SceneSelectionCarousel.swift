@@ -51,6 +51,7 @@ struct SceneSelectionCarousel: View {
     @State private var draggingItem = 0.0
 
     @State var currentWindow: String = ""
+    @State var currentSpace: String = ""
 
     var body: some View {
         ZStack {
@@ -72,30 +73,17 @@ struct SceneSelectionCarousel: View {
                     }
                 }
                 .onTapGesture {
-//                    if currentWindow != "" {
-//                        let _ = print("jiahui: currentWorld: \(currentWindow)")
-//                        dismissWindow(id: currentWindow)
-//                    }
-
+                    // Open new window
+                    openWindow(id: item.videoName)
+                    currentWindow = item.videoName
                     Task {
-                        dismiss()
-                        if currentWindow != "" {
+                        // Dismiss the current space if present
+                        if currentSpace != "" {
                             await dismissImmersiveSpace()
                         }
-                        let _ = print("jiahui: entityName: \(item.entityName)")
+                        // Open new immersive space
                         await openImmersiveSpace(id: item.entityName)
-                        if currentWindow != "" {
-                            dismissWindow(id: currentWindow)
-                        }
-                        currentWindow = item.videoName
-                        openWindow(id: item.videoName)
-
-//                        ForEach(store.items, id: \.self) { item in
-//                            if item.videoName != currentWindow {
-//                                dismissWindow(id: item.videoName)
-//                            }
-//                        }
-                        openWindow(id: "Carousel")
+                        currentSpace = item.entityName
                     }
                 }
                 .frame(width: 200, height: 200)

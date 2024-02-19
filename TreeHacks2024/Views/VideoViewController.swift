@@ -20,9 +20,6 @@ struct VideoViewController: UIViewControllerRepresentable {
         controller.modalPresentationStyle = .fullScreen
         controller.player = player
         controller.player?.play()
-//        controller.showsPlaybackControls = true
-//        controller.entersFullScreenWhenPlaybackBegins = true
-
         return controller
     }
 
