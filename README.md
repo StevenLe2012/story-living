@@ -1,3 +1,18 @@
+# StoryLiving - visionOS App (TreeHacks 2024)
+
+Do you wish you could feel more connected to your loved ones? What if you could share and relive your memories with them? Now, with our app, you can view a spatial video or photo with your loved ones in the exact 3D environment in which the memory happened. **You aren't just story-telling. You are now story-living**.
+
+- Devpost: https://devpost.com/software/storyliving
+- YouTube: https://youtu.be/jHisBQFxLAs?si=hgV63IyufbpRisNO
+
+[![StoryLiving](https://i.imgur.com/QhR6yUi.png)](https://youtu.be/jHisBQFxLAs?si=hgV63IyufbpRisNO)
+
+### Team Contributions:
+- [Steven Le](https://www.linkedin.com/in/stevenle1337/) (Stanford) - Project Manager
+- [Jiahui Chen](https://www.linkedin.com/in/jchenstf/) (Stanford) - Frontend visionOS Dev
+- [Rylan Pozniak](https://www.linkedin.com/in/rylandaniels/) (USC) - Backend visionOS Dev
+- [Shawn Park](https://www.linkedin.com/in/shawn-park-5a4644221/) (CMU) - Video Editor + Narrative
+
 ## Inspiration
 Social isolation among the elderly is a global problem. Around the world, 1 in 4 individuals above 60 experience social isolation. And 40% of Japan’s population aged above 60 experiences social isolation. The need for richer, more meaningful connections is critical.
 
